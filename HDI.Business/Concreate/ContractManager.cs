@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace HDI.Business.Concreate
 {
-    internal class ContractManager : IContractManager
+    public class ContractManager : IContractManager
     {
         private readonly IMapper _mapper;
         private readonly IContractRepository _contractRepository;

@@ -10,7 +10,7 @@ namespace HDI.Business.Abstruct
 {
     public interface IProductManager
     {
-        Task<Result<ProductModel>> AddAsync(PartnerModel partner);
+        Task<Result<ProductModel>> AddAsync(ProductModel product);
         Task<Result> DeleteAsync(long id);
         Task<Result<List<ProductModel>>> GetListAsync();
     }
