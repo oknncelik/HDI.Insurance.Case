@@ -24,13 +24,13 @@ namespace HDI.Business.Concreate
             _productRepository = productRepository;
         }
 
-        public async Task<Result<ProductModel>> AddAsync(PartnerModel partner)
+        public async Task<Result<ProductModel>> AddAsync(ProductModel product)
         {
             var result = new Result<ProductModel>();
 
             try
             {
-                var entity = await _productRepository.AddAsync(_mapper.Map<Product>(partner));
+                var entity = await _productRepository.AddAsync(_mapper.Map<Product>(product));
 
                 result.Code = 1;
                 result.Message = "İşlem Başarılı";
