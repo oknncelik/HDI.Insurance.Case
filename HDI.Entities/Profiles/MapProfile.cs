@@ -19,6 +19,7 @@ namespace HDI.Entities
             CreateMap<Partner, PartnerModel>().ReverseMap();
             CreateMap<Product, ProductModel>().ReverseMap();
             CreateMap<Contract, ContractModel>().ReverseMap();
+            CreateMap<Work, WorkModel>().ReverseMap();
         }
     }
 }

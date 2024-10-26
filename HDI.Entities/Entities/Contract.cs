@@ -10,7 +10,9 @@ namespace HDI.Entities.Entities
     public class Contract : Entity
     {
         public long PartnerId { get; set; }
+        public Partner Partner { get; set; }
         public long ProductId { get; set; }
+        public Product Product { get; set; }
         public long Count { get; set; }
         public decimal Price { get; set; }
         public DateTime StartDate { get; set; }

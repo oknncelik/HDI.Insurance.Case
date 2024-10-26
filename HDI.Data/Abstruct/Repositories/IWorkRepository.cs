@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace HDI.Data.Abstruct.Repositories
 {
-    public interface IContractRepository : IContext<Contract>
+    public interface IWorkRepository : IContext<Work>
     {
-        Task<List<Contract>> ContractList();
     }
 }

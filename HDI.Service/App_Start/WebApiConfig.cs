@@ -1,4 +1,6 @@
-﻿using System.Web.Http;
+﻿using HDI.Service.App_Start;
+using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace HDI.Service
 {
@@ -6,6 +8,9 @@ namespace HDI.Service
     {
         public static void Register(HttpConfiguration config)
         {
+            var cors = new EnableCorsAttribute("*", "*", "*");
+            config.EnableCors(cors);
+
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(

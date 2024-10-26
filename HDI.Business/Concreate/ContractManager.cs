@@ -53,7 +53,7 @@ namespace HDI.Business.Concreate
 
             try
             {
-                var entity = await _contractRepository.GetListAsync();
+                var entity = await _contractRepository.ContractList();
 
                 result.Code = 1;
                 result.Message = "İşlem Başarılı";
@@ -76,7 +76,7 @@ namespace HDI.Business.Concreate
             {
                 result.IsSuccess = await _contractRepository.DeleteAsync(id);
 
-                result.Code = 1;
+                result.Code = result.IsSuccess ? 1 : -1;
                 if (result.IsSuccess)
                     result.Message = $"#{id} ID'li kayıt silindi.";
                 else

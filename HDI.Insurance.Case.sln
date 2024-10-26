@@ -18,6 +18,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{6C
 		DBScripts.sql = DBScripts.sql
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentations", "Presentations", "{263A9DEB-EE1D-47B1-96C1-7D92713DE962}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "hdi.ui", "hdi.ui\hdi.ui.esproj", "{FF17A42C-5B61-4338-AE50-EAB940CA9E12}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,9 +48,18 @@ Global
 		{D2418DC4-0860-4BE5-ABEE-52E9A87647D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2418DC4-0860-4BE5-ABEE-52E9A87647D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D2418DC4-0860-4BE5-ABEE-52E9A87647D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF17A42C-5B61-4338-AE50-EAB940CA9E12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF17A42C-5B61-4338-AE50-EAB940CA9E12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF17A42C-5B61-4338-AE50-EAB940CA9E12}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{FF17A42C-5B61-4338-AE50-EAB940CA9E12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF17A42C-5B61-4338-AE50-EAB940CA9E12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF17A42C-5B61-4338-AE50-EAB940CA9E12}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FF17A42C-5B61-4338-AE50-EAB940CA9E12} = {263A9DEB-EE1D-47B1-96C1-7D92713DE962}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B96D11E0-C18B-4FD9-A4C8-9971F4A96AAF}

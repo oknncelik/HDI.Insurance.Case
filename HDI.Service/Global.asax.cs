@@ -24,6 +24,7 @@ namespace HDI.Service
             GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             GlobalConfiguration.Configuration.Formatters.Remove(GlobalConfiguration.Configuration.Formatters.XmlFormatter);
 
+
             #region CONTAINER (Bağımlılıklar...)
 
             var builder = new ContainerBuilder();
@@ -34,12 +35,14 @@ namespace HDI.Service
             builder.RegisterType<PartnerManager>().As<IPartnerManager>();
             builder.RegisterType<ProductManager>().As<IProductManager>();
             builder.RegisterType<ContractManager>().As<IContractManager>();
+            builder.RegisterType<WorkManager>().As<IWorkManager>();
 
 
             //Repositories...
             builder.RegisterType<PartnerRepository>().As<IPartnerRepository>();
             builder.RegisterType<ProductRepository>().As<IProductRepository>();
             builder.RegisterType<ContractRepository>().As<IContractRepository>();
+            builder.RegisterType<WorkRepository>().As<IWorkRepository>();
 
 
             //Automapper...
