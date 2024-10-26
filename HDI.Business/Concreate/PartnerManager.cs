@@ -76,7 +76,7 @@ namespace HDI.Business.Concreate
             {
                 result.IsSuccess = await _partnerRepository.DeleteAsync(id);
 
-                result.Code = 1;
+                result.Code = result.IsSuccess ? 1 : -1;
                 if (result.IsSuccess)
                     result.Message = $"#{id} ID'li kayıt silindi.";
                 else

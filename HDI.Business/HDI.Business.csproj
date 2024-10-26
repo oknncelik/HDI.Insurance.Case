@@ -57,9 +57,11 @@
     <Compile Include="Abstruct\IContractManager.cs" />
     <Compile Include="Abstruct\IPartnerManager.cs" />
     <Compile Include="Abstruct\IProductManager.cs" />
+    <Compile Include="Abstruct\IWorkManager.cs" />
     <Compile Include="Concreate\ContractManager.cs" />
     <Compile Include="Concreate\PartnerManager.cs" />
     <Compile Include="Concreate\ProductManager.cs" />
+    <Compile Include="Concreate\WorkManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -15,6 +15,13 @@ namespace HDI.Data.Concreate
         where TEntity : class, IEntity, new()
         where TContext : DbContext, new()
     {
+        public readonly  TContext _context;
+
+        protected BaseContext()
+        {
+            _context = new TContext();
+        }
+
         public async Task<TEntity> AddAsync(TEntity entity)
         {
             using (var context = new TContext())

@@ -55,10 +55,12 @@
     <Compile Include="Abstruct\Repositories\IContractRepository.cs" />
     <Compile Include="Abstruct\Repositories\IPartnerRepository.cs" />
     <Compile Include="Abstruct\Repositories\IProductRepository.cs" />
+    <Compile Include="Abstruct\Repositories\IWorkRepository.cs" />
     <Compile Include="Concreate\BaseContext.cs" />
     <Compile Include="Concreate\Repositories\ContractRepository.cs" />
     <Compile Include="Concreate\Repositories\PartnerRepository.cs" />
     <Compile Include="Concreate\Repositories\ProductRepository.cs" />
+    <Compile Include="Concreate\Repositories\WorkRepository.cs" />
     <Compile Include="Contexts\HDIContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

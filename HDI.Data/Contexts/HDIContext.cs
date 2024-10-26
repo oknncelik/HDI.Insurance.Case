@@ -19,5 +19,6 @@ namespace HDI.Data.Contexts
         public DbSet<Partner> Partner { get; set; }
         public DbSet<Product> Product { get; set; }
         public DbSet<Contract> Contract { get; set; }
+        public DbSet<Work> Work { get; set; }
     }
 }
