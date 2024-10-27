@@ -35,6 +35,8 @@ namespace HDI.Partner.Integration.HDIPartnerService {
         
         private System.Threading.SendOrPostCallback GetPartnersOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetPartnerContractsOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetProductsOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetWorkListOperationCompleted;
@@ -82,6 +84,9 @@ namespace HDI.Partner.Integration.HDIPartnerService {
         
         /// <remarks/>
         public event GetPartnersCompletedEventHandler GetPartnersCompleted;
+        
+        /// <remarks/>
+        public event GetPartnerContractsCompletedEventHandler GetPartnerContractsCompleted;
         
         /// <remarks/>
         public event GetProductsCompletedEventHandler GetProductsCompleted;
@@ -148,24 +153,60 @@ namespace HDI.Partner.Integration.HDIPartnerService {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IPartnerService/GetPartnerContracts", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public ResultOfArrayOfContractModelwaIoxn6K GetPartnerContracts(long partnerId, [System.Xml.Serialization.XmlIgnoreAttribute()] bool partnerIdSpecified) {
+            object[] results = this.Invoke("GetPartnerContracts", new object[] {
+                        partnerId,
+                        partnerIdSpecified});
+            return ((ResultOfArrayOfContractModelwaIoxn6K)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetPartnerContractsAsync(long partnerId, bool partnerIdSpecified) {
+            this.GetPartnerContractsAsync(partnerId, partnerIdSpecified, null);
+        }
+        
+        /// <remarks/>
+        public void GetPartnerContractsAsync(long partnerId, bool partnerIdSpecified, object userState) {
+            if ((this.GetPartnerContractsOperationCompleted == null)) {
+                this.GetPartnerContractsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetPartnerContractsOperationCompleted);
+            }
+            this.InvokeAsync("GetPartnerContracts", new object[] {
+                        partnerId,
+                        partnerIdSpecified}, this.GetPartnerContractsOperationCompleted, userState);
+        }
+        
+        private void OnGetPartnerContractsOperationCompleted(object arg) {
+            if ((this.GetPartnerContractsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetPartnerContractsCompleted(this, new GetPartnerContractsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IPartnerService/GetProducts", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public ResultOfArrayOfProductModelwaIoxn6K GetProducts() {
-            object[] results = this.Invoke("GetProducts", new object[0]);
+        public ResultOfArrayOfProductModelwaIoxn6K GetProducts(long partnerId, [System.Xml.Serialization.XmlIgnoreAttribute()] bool partnerIdSpecified) {
+            object[] results = this.Invoke("GetProducts", new object[] {
+                        partnerId,
+                        partnerIdSpecified});
             return ((ResultOfArrayOfProductModelwaIoxn6K)(results[0]));
         }
         
         /// <remarks/>
-        public void GetProductsAsync() {
-            this.GetProductsAsync(null);
+        public void GetProductsAsync(long partnerId, bool partnerIdSpecified) {
+            this.GetProductsAsync(partnerId, partnerIdSpecified, null);
         }
         
         /// <remarks/>
-        public void GetProductsAsync(object userState) {
+        public void GetProductsAsync(long partnerId, bool partnerIdSpecified, object userState) {
             if ((this.GetProductsOperationCompleted == null)) {
                 this.GetProductsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetProductsOperationCompleted);
             }
-            this.InvokeAsync("GetProducts", new object[0], this.GetProductsOperationCompleted, userState);
+            this.InvokeAsync("GetProducts", new object[] {
+                        partnerId,
+                        partnerIdSpecified}, this.GetProductsOperationCompleted, userState);
         }
         
         private void OnGetProductsOperationCompleted(object arg) {
@@ -178,22 +219,26 @@ namespace HDI.Partner.Integration.HDIPartnerService {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IPartnerService/GetWorkList", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public ResultOfArrayOfWorkModelwaIoxn6K GetWorkList() {
-            object[] results = this.Invoke("GetWorkList", new object[0]);
+        public ResultOfArrayOfWorkModelwaIoxn6K GetWorkList(long partnerId, [System.Xml.Serialization.XmlIgnoreAttribute()] bool partnerIdSpecified) {
+            object[] results = this.Invoke("GetWorkList", new object[] {
+                        partnerId,
+                        partnerIdSpecified});
             return ((ResultOfArrayOfWorkModelwaIoxn6K)(results[0]));
         }
         
         /// <remarks/>
-        public void GetWorkListAsync() {
-            this.GetWorkListAsync(null);
+        public void GetWorkListAsync(long partnerId, bool partnerIdSpecified) {
+            this.GetWorkListAsync(partnerId, partnerIdSpecified, null);
         }
         
         /// <remarks/>
-        public void GetWorkListAsync(object userState) {
+        public void GetWorkListAsync(long partnerId, bool partnerIdSpecified, object userState) {
             if ((this.GetWorkListOperationCompleted == null)) {
                 this.GetWorkListOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetWorkListOperationCompleted);
             }
-            this.InvokeAsync("GetWorkList", new object[0], this.GetWorkListOperationCompleted, userState);
+            this.InvokeAsync("GetWorkList", new object[] {
+                        partnerId,
+                        partnerIdSpecified}, this.GetWorkListOperationCompleted, userState);
         }
         
         private void OnGetWorkListOperationCompleted(object arg) {
@@ -234,9 +279,13 @@ namespace HDI.Partner.Integration.HDIPartnerService {
         
         private bool dateFieldSpecified;
         
+        private PartnerModel partnerField;
+        
         private long partnerIdField;
         
         private bool partnerIdFieldSpecified;
+        
+        private ProductModel productField;
         
         private long productIdField;
         
@@ -264,6 +313,17 @@ namespace HDI.Partner.Integration.HDIPartnerService {
         }
         
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public PartnerModel Partner {
+            get {
+                return this.partnerField;
+            }
+            set {
+                this.partnerField = value;
+            }
+        }
+        
+        /// <remarks/>
         public long PartnerId {
             get {
                 return this.partnerIdField;
@@ -281,6 +341,17 @@ namespace HDI.Partner.Integration.HDIPartnerService {
             }
             set {
                 this.partnerIdFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public ProductModel Product {
+            get {
+                return this.productField;
+            }
+            set {
+                this.productField = value;
             }
         }
         
@@ -307,6 +378,29 @@ namespace HDI.Partner.Integration.HDIPartnerService {
     }
     
     /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/HDI.Entities.DTOs")]
+    public partial class PartnerModel : Model {
+        
+        private string nameField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string Name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ContractModel))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ProductModel))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(PartnerModel))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(WorkModel))]
@@ -346,6 +440,7 @@ namespace HDI.Partner.Integration.HDIPartnerService {
     /// <remarks/>
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ResultOfArrayOfWorkModelwaIoxn6K))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ResultOfArrayOfProductModelwaIoxn6K))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ResultOfArrayOfContractModelwaIoxn6K))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ResultOfArrayOfPartnerModelwaIoxn6K))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ResultOfWorkModelwaIoxn6K))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
@@ -493,14 +588,14 @@ namespace HDI.Partner.Integration.HDIPartnerService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/HDI.Core.Results")]
-    public partial class ResultOfArrayOfPartnerModelwaIoxn6K : Result {
+    public partial class ResultOfArrayOfContractModelwaIoxn6K : Result {
         
-        private PartnerModel[] dataField;
+        private ContractModel[] dataField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
         [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/HDI.Entities.DTOs")]
-        public PartnerModel[] Data {
+        public ContractModel[] Data {
             get {
                 return this.dataField;
             }
@@ -516,18 +611,204 @@ namespace HDI.Partner.Integration.HDIPartnerService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/HDI.Entities.DTOs")]
-    public partial class PartnerModel : Model {
+    public partial class ContractModel : Model {
         
-        private string nameField;
+        private long countField;
+        
+        private bool countFieldSpecified;
+        
+        private System.DateTime endDateField;
+        
+        private bool endDateFieldSpecified;
+        
+        private PartnerModel partnerField;
+        
+        private long partnerIdField;
+        
+        private bool partnerIdFieldSpecified;
+        
+        private decimal priceField;
+        
+        private bool priceFieldSpecified;
+        
+        private ProductModel productField;
+        
+        private long productIdField;
+        
+        private bool productIdFieldSpecified;
+        
+        private System.DateTime startDateField;
+        
+        private bool startDateFieldSpecified;
+        
+        /// <remarks/>
+        public long Count {
+            get {
+                return this.countField;
+            }
+            set {
+                this.countField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool CountSpecified {
+            get {
+                return this.countFieldSpecified;
+            }
+            set {
+                this.countFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime EndDate {
+            get {
+                return this.endDateField;
+            }
+            set {
+                this.endDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool EndDateSpecified {
+            get {
+                return this.endDateFieldSpecified;
+            }
+            set {
+                this.endDateFieldSpecified = value;
+            }
+        }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string Name {
+        public PartnerModel Partner {
             get {
-                return this.nameField;
+                return this.partnerField;
             }
             set {
-                this.nameField = value;
+                this.partnerField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public long PartnerId {
+            get {
+                return this.partnerIdField;
+            }
+            set {
+                this.partnerIdField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool PartnerIdSpecified {
+            get {
+                return this.partnerIdFieldSpecified;
+            }
+            set {
+                this.partnerIdFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        public decimal Price {
+            get {
+                return this.priceField;
+            }
+            set {
+                this.priceField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool PriceSpecified {
+            get {
+                return this.priceFieldSpecified;
+            }
+            set {
+                this.priceFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public ProductModel Product {
+            get {
+                return this.productField;
+            }
+            set {
+                this.productField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public long ProductId {
+            get {
+                return this.productIdField;
+            }
+            set {
+                this.productIdField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool ProductIdSpecified {
+            get {
+                return this.productIdFieldSpecified;
+            }
+            set {
+                this.productIdFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime StartDate {
+            get {
+                return this.startDateField;
+            }
+            set {
+                this.startDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool StartDateSpecified {
+            get {
+                return this.startDateFieldSpecified;
+            }
+            set {
+                this.startDateFieldSpecified = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/HDI.Core.Results")]
+    public partial class ResultOfArrayOfPartnerModelwaIoxn6K : Result {
+        
+        private PartnerModel[] dataField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+        [System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/HDI.Entities.DTOs")]
+        public PartnerModel[] Data {
+            get {
+                return this.dataField;
+            }
+            set {
+                this.dataField = value;
             }
         }
     }
@@ -602,6 +883,32 @@ namespace HDI.Partner.Integration.HDIPartnerService {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((ResultOfArrayOfPartnerModelwaIoxn6K)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void GetPartnerContractsCompletedEventHandler(object sender, GetPartnerContractsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetPartnerContractsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetPartnerContractsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public ResultOfArrayOfContractModelwaIoxn6K Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((ResultOfArrayOfContractModelwaIoxn6K)(this.results[0]));
             }
         }
     }

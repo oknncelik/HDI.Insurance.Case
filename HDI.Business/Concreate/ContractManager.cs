@@ -69,6 +69,28 @@ namespace HDI.Business.Concreate
             return result;
         }
 
+        public async Task<Result<List<ContractModel>>> GetPartnerContractsAsync(long partnerId)
+        {
+            var result = new Result<List<ContractModel>>();
+
+            try
+            {
+                var entity = await _contractRepository.GetListAsync(x=> x.PartnerId == partnerId);
+
+                result.Code = 1;
+                result.Message = "İşlem Başarılı";
+                result.Data = _mapper.Map<List<ContractModel>>(entity);
+            }
+            catch (Exception ex)
+            {
+                result.IsSuccess = false;
+                result.Code = 0;
+                result.Message = $"Hata : {ex.Message}";
+            }
+
+            return result;
+        }
+
         public async Task<Result> DeleteAsync(long id)
         {
             var result = new Result();

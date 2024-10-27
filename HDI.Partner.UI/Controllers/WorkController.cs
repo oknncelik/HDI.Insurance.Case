@@ -12,12 +12,6 @@ namespace HDI.Partner.UI.Controllers
 {
     public class WorkController : Controller
     {
-        private readonly IPartnerService _partnerService;
-        public WorkController(IPartnerService partnerService)
-        {
-            _partnerService = partnerService;
-        }
-
         public ActionResult Index()
         {
             return View();

@@ -21,6 +21,12 @@
   <wsdl:message name="IPartnerService_GetPartners_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetPartnersResponse" />
   </wsdl:message>
+  <wsdl:message name="IPartnerService_GetPartnerContracts_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPartnerContracts" />
+  </wsdl:message>
+  <wsdl:message name="IPartnerService_GetPartnerContracts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPartnerContractsResponse" />
+  </wsdl:message>
   <wsdl:message name="IPartnerService_GetProducts_InputMessage">
     <wsdl:part name="parameters" element="tns:GetProducts" />
   </wsdl:message>
@@ -41,6 +47,10 @@
     <wsdl:operation name="GetPartners">
       <wsdl:input wsaw:Action="http://tempuri.org/IPartnerService/GetPartners" message="tns:IPartnerService_GetPartners_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPartnerService/GetPartnersResponse" message="tns:IPartnerService_GetPartners_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPartnerContracts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPartnerService/GetPartnerContracts" message="tns:IPartnerService_GetPartnerContracts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPartnerService/GetPartnerContractsResponse" message="tns:IPartnerService_GetPartnerContracts_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetProducts">
       <wsdl:input wsaw:Action="http://tempuri.org/IPartnerService/GetProducts" message="tns:IPartnerService_GetProducts_InputMessage" />
@@ -64,6 +74,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetPartners">
       <soap:operation soapAction="http://tempuri.org/IPartnerService/GetPartners" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPartnerContracts">
+      <soap:operation soapAction="http://tempuri.org/IPartnerService/GetPartnerContracts" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -1,13 +1,9 @@
 ﻿using HDI.Core.Results;
 using HDI.Entities.DTOs;
-using HDI.Partner.Integration.Abstruct;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using HDI.Partner.Integration.Abstruct;
 
 namespace HDI.Partner.UI.Controllers
 {
@@ -33,15 +29,21 @@ namespace HDI.Partner.UI.Controllers
 
 
         [HttpGet]
-        public async Task<Result<List<ProductModel>>> GetProducts()
+        public async Task<Result<List<ProductModel>>> GetProducts(long id)
         {
-            return await _partnerService.GetProducts();
+            return await _partnerService.GetProducts(id);
         }
 
         [HttpPost]
-        public async Task<Result<WorkModel>> GetProducts(WorkModel id)
+        public async Task<Result<WorkModel>> AddWork(WorkModel id)
         {
             return await _partnerService.AddWork(id);
+        }
+
+        [HttpGet]
+        public async Task<Result<List<ContractModel>>> GetPartnerContracts(long id)
+        {
+            return await _partnerService.GetPartnerContracts(id);
         }
     }
 }

@@ -12,16 +12,20 @@ using System.Threading.Tasks;
 
 namespace HDI.Partner.WCF.Service
 {
-    public class PartnerService : IPartnerService
+    public class PartnerService : HDI.Partner.WCF.Service.IPartnerService
     {
         private readonly IWorkManager _workManager;
+        private readonly IContractManager _contractManager;
         private readonly IPartnerManager _partnerManager;
         private readonly IProductManager _productManager;
+        
         public PartnerService(IWorkManager workManager,
+                              IContractManager contractManager,
                               IPartnerManager partnerManager,
                               IProductManager productManager)
         {
             _workManager = workManager;
+            _contractManager = contractManager;
             _partnerManager = partnerManager;
             _productManager = productManager;
         }
@@ -31,19 +35,24 @@ namespace HDI.Partner.WCF.Service
             return await _partnerManager.GetListAsync();
         }
 
-        public async Task<Result<List<ProductModel>>> GetProducts()
+        public async Task<Result<List<ProductModel>>> GetProducts(long partnerId)
         {
-            return await _productManager.GetListAsync();
+            return await _productManager.GetPartnerProductListAsync(partnerId);
         }
 
         public async Task<Result<List<WorkModel>>> GetWorkList(long partnerId)
         {
-            return await _workManager.GetListAsync(partnerId);
+            return await _workManager.GetPartnerWorkListAsync(partnerId);
         }
 
         public async Task<Result<WorkModel>> AddWork(WorkModel work)
         {
             return await _workManager.AddAsync(work);
+        }
+
+        public async Task<Result<List<ContractModel>>> GetPartnerContracts(long partnerId)
+        {
+            return await _contractManager.GetPartnerContractsAsync(partnerId);
         }
     }
 }
