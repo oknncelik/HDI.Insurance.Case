@@ -14,6 +14,12 @@ function PartnerForm() {
             let request = {
                 Name: e.target.elements.productName.value
             }
+
+            if (!request.Name) {
+                setMessage("Lütfen partner adı giriniz !");
+                return;
+            }
+
             const response = await axios.post(packageJson.serviceBaseURL + "api/partner/add", request);
             if (response.data.IsSuccess) {
                 setMessage("Kaydedildi.");

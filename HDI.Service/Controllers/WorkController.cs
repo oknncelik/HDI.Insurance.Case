@@ -36,5 +36,12 @@ namespace HDI.Service.Controllers
         {
             return await _workManager.DeleteAsync(id);
         }
+
+
+        [HttpGet]
+        public async Task<Result<List<WorkResultModel>>> GetWorkResults()
+        {
+            return await _workManager.GetWorkResultsAsync();
+        }
     }
 }

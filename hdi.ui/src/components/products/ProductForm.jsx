@@ -14,6 +14,12 @@ function ProductForm() {
             let request = {
                 Name: e.target.elements.productName.value
             }
+
+
+            if (!request.Name) {
+                setMessage("Lütfen ürün/hizmet adı giriniz !");
+                return;
+            }
             const response = await axios.post(packageJson.serviceBaseURL + "api/product/add", request);
             if (response.data.IsSuccess) {
                 setMessage("Kaydedildi.");

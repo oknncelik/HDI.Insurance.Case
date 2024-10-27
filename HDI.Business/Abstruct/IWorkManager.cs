@@ -14,5 +14,6 @@ namespace HDI.Business.Abstruct
         Task<Result> DeleteAsync(long id);
         Task<Result<List<WorkModel>>> GetListAsync();
         Task<Result<List<WorkModel>>> GetPartnerWorkListAsync(long partnerId);
+        Task<Result<List<WorkResultModel>>> GetWorkResultsAsync();
     }
 }

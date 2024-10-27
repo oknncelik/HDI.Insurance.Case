@@ -40,6 +40,16 @@ function ContractForm() {
                 StartDate: startDate,
                 EndDate: endDate
             }
+
+            if (!request.PartnerId ||
+                !request.ProductId ||
+                !request.Count ||
+                !request.Price ||
+                !request.StartDate ||
+                !request.EndDate) {
+                setMessage("Lütfen tüm alanları doldurunuz !");
+            }
+
             const response = await axios.post(packageJson.serviceBaseURL + "api/contract/add", request);
             if (response.data.IsSuccess) {
                 setMessage("Kaydedildi.");
