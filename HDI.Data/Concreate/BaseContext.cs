@@ -10,19 +10,29 @@ using System.Threading.Tasks;
 
 namespace HDI.Data.Concreate
 {
-    //CRUD Operasyonları Generic olarak bu clasta gerçekleşir...
+    /// <summary>
+    /// CRUD Operasyonları Generic olarak bu classta gerçekleşir...
+    /// Spesifik sorgular her tablo için oluşturulan Repository clasında yapılmalı...
+    /// </summary>
+    /// <typeparam name="TEntity"></typeparam>
+    /// <typeparam name="TContext"></typeparam>
     public abstract class BaseContext<TEntity, TContext> : IContext<TEntity>
         where TEntity : class, IEntity, new()
         where TContext : DbContext, new()
     {
+
+        /// <summary>
+        /// Spesifik sorgular için Repositorylerden erişilebilir context.
+        /// </summary>
         public readonly  TContext _context;
 
         protected BaseContext()
         {
+            //Contexte dependencies den gelebilirdi ama abartmayalım mülakat uygulaması.
             _context = new TContext();
         }
 
-        public async Task<TEntity> AddAsync(TEntity entity)
+        public virtual async Task<TEntity> AddAsync(TEntity entity)
         {
             using (var context = new TContext())
             {
@@ -39,7 +49,7 @@ namespace HDI.Data.Concreate
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        public async Task<bool> DeleteAsync(TEntity entity)
+        public virtual async Task<bool> DeleteAsync(TEntity entity)
         {
             using (var context = new TContext())
             {
@@ -57,7 +67,7 @@ namespace HDI.Data.Concreate
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<bool> DeleteAsync(long id)
+        public virtual async Task<bool> DeleteAsync(long id)
         {
             using (var context = new TContext())
             {
@@ -76,13 +86,15 @@ namespace HDI.Data.Concreate
         /// </summary>
         /// <param name="filter"></param>
         /// <returns></returns>
-        public async Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> filter)
+        public virtual async Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> filter)
         {
             using (var context = new TContext())
             {
+                var quer = context.Set<TEntity>().Where(x => x.ActiveFlg == true);
+
                 if (filter != null)
-                    return await context.Set<TEntity>().Where(x=> x.ActiveFlg == true).Where(filter).FirstOrDefaultAsync();
-                return await context.Set<TEntity>().Where(x => x.ActiveFlg == true).FirstOrDefaultAsync();
+                    return await quer.Where(filter).FirstOrDefaultAsync();
+                return await quer.FirstOrDefaultAsync();
             }
         }
 
@@ -91,17 +103,19 @@ namespace HDI.Data.Concreate
         /// </summary>
         /// <param name="filter"></param>
         /// <returns></returns>
-        public async Task<IList<TEntity>> GetListAsync(Expression<Func<TEntity, bool>> filter = null)
+        public virtual async Task<IList<TEntity>> GetListAsync(Expression<Func<TEntity, bool>> filter = null)
         {
             using (var context = new TContext())
             {
+                var quer = context.Set<TEntity>().Where(x => x.ActiveFlg == true);
+
                 if (filter != null)
-                    return await context.Set<TEntity>().Where(x=> x.ActiveFlg == true).Where(filter).ToListAsync();
-                return await context.Set<TEntity>().Where(x => x.ActiveFlg == true).ToListAsync();
+                    return await quer.Where(filter).ToListAsync();
+                return await quer.ToListAsync();
             }
         }
 
-        public async Task<TEntity> UpdateAsync(TEntity entity)
+        public virtual async Task<TEntity> UpdateAsync(TEntity entity)
         {
             using (var context = new TContext())
             {

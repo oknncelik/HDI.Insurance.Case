@@ -12,7 +12,7 @@ namespace HDI.Data.Contexts
     {
         public HDIContext()
         {
-            //TODO:Burası Webconfig e taşınacak...
+            //İki uygulama connect olduğundan connection stringi burda tanımladım normalde webconfig yada appconfig dosyasından gelmeli !...
             Database.Connection.ConnectionString = @"Server=localhost,1433; database=HDICASESAMPLE; User ID=sa; password=19Mayis1919!;";
         }
 

@@ -53,7 +53,7 @@ namespace HDI.Business.Concreate
 
             try
             {
-                var entity = await _contractRepository.ContractList();
+                var entity = await _contractRepository.GetListAsync();
 
                 result.Code = 1;
                 result.Message = "İşlem Başarılı";

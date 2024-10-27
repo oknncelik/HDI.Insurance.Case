@@ -9,6 +9,6 @@ namespace HDI.Data.Abstruct.Repositories
 {
     public interface IContractRepository : IContext<Contract>
     {
-        Task<List<Contract>> ContractList();
+
     }
 }

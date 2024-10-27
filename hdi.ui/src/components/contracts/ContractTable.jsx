@@ -72,7 +72,7 @@ function ContractList() {
     return (
         <div>
             {
-                data ? <DataTable columns={columns} data={data} /> : <h1>Veri Bulunamadı !</h1>
+                data && data.length > 0 ? <DataTable columns={columns} data={data} /> : <p>Veri Bulunamadı !</p>
             }
         </div>
     );
