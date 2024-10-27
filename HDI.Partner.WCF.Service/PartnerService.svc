@@ -1,0 +1,3 @@
+﻿<%@ ServiceHost Language="C#" Debug="true"
+Service="HDI.Partner.WCF.Service.IPartnerService, HDI.Partner.WCF.Service" CodeBehind="Partner.svc.cs"
+Factory="Autofac.Integration.Wcf.AutofacServiceHostFactory, Autofac.Integration.Wcf" %>

@@ -1,4 +1,4 @@
-import react from 'react';
+import React from 'react';
 
 function HDIModal({ open, children, onClose, title }) {
     if (!open)
