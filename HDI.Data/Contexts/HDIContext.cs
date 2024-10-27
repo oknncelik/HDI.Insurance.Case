@@ -13,7 +13,7 @@ namespace HDI.Data.Contexts
         public HDIContext()
         {
             //İki uygulama connect olduğundan connection stringi burda tanımladım normalde webconfig yada appconfig dosyasından gelmeli !...
-            Database.Connection.ConnectionString = @"Server=localhost,1433; database=HDICASESAMPLE1; User ID=sa; password=19Mayis1919!;";
+            Database.Connection.ConnectionString = @"Server=localhost,1433; database=HDICASESAMPLE; User ID=sa; password=19Mayis1919!;";
         }
 
         public DbSet<Partner> Partner { get; set; }
