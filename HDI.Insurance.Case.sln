@@ -22,6 +22,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentations", "Presentati
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "hdi.ui", "hdi.ui\hdi.ui.esproj", "{FF17A42C-5B61-4338-AE50-EAB940CA9E12}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HDI.Partner.WCF.Service", "HDI.Partner.WCF.Service\HDI.Partner.WCF.Service.csproj", "{7844FD22-1544-43B6-9298-04811F9F5D87}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,6 +56,10 @@ Global
 		{FF17A42C-5B61-4338-AE50-EAB940CA9E12}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF17A42C-5B61-4338-AE50-EAB940CA9E12}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FF17A42C-5B61-4338-AE50-EAB940CA9E12}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{7844FD22-1544-43B6-9298-04811F9F5D87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7844FD22-1544-43B6-9298-04811F9F5D87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7844FD22-1544-43B6-9298-04811F9F5D87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7844FD22-1544-43B6-9298-04811F9F5D87}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
