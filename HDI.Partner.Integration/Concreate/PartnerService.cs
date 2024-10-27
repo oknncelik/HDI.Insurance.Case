@@ -23,9 +23,9 @@ namespace HDI.Partner.Integration.Concreate
             return await _service.AddWork(work);
         }
 
-        public async Task<Result<List<WorkModel>>> GetWorkList()
+        public async Task<Result<List<WorkModel>>> GetWorkList(long partnerId)
         {
-            return await _service.GetWorkList();
+            return await _service.GetWorkList(partnerId);
         }
 
         public async Task<Result<List<PartnerModel>>> GetPartners()

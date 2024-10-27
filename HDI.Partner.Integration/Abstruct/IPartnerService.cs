@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace HDI.Partner.Integration.Abstruct
 {
-    internal interface IPartnerService
+    public interface IPartnerService
     {
         Task<Result<WorkModel>> AddWork(WorkModel work);
         Task<Result<List<PartnerModel>>> GetPartners();
         Task<Result<List<ProductModel>>> GetProducts();
-        Task<Result<List<WorkModel>>> GetWorkList();
+        Task<Result<List<WorkModel>>> GetWorkList(long partnerId);
     }
 }
