@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HDI.Entities.DTOs" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HDI.Entities.DTOs" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:9000/PartnerService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HDI.Entities.Concreate" />
+  <xs:complexType name="WorkModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HDI.Entities.Concreate" base="q1:Model">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="PartnerId" type="xs:long" />
+          <xs:element minOccurs="0" name="ProductId" type="xs:long" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="WorkModel" nillable="true" type="tns:WorkModel" />
+  <xs:complexType name="ArrayOfPartnerModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PartnerModel" nillable="true" type="tns:PartnerModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPartnerModel" nillable="true" type="tns:ArrayOfPartnerModel" />
+  <xs:complexType name="PartnerModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/HDI.Entities.Concreate" base="q2:Model">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PartnerModel" nillable="true" type="tns:PartnerModel" />
+  <xs:complexType name="ArrayOfProductModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ProductModel" nillable="true" type="tns:ProductModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProductModel" nillable="true" type="tns:ArrayOfProductModel" />
+  <xs:complexType name="ProductModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/HDI.Entities.Concreate" base="q3:Model">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ProductModel" nillable="true" type="tns:ProductModel" />
+  <xs:complexType name="ArrayOfWorkModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="WorkModel" nillable="true" type="tns:WorkModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfWorkModel" nillable="true" type="tns:ArrayOfWorkModel" />
+</xs:schema>

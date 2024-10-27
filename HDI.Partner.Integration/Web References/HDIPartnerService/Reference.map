@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DiscoveryClientResultsFile xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Results>
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://localhost:9000/PartnerService.svc?wsdl" filename="PartnerService.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:9000/PartnerService.svc?xsd=xsd0" filename="PartnerService.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:9000/PartnerService.svc?xsd=xsd1" filename="PartnerService0.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:9000/PartnerService.svc?xsd=xsd2" filename="PartnerService1.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:9000/PartnerService.svc?xsd=xsd3" filename="PartnerService2.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost:9000/PartnerService.svc?xsd=xsd4" filename="PartnerService3.xsd" />
+  </Results>
+</DiscoveryClientResultsFile>
