@@ -1,4 +1,4 @@
-﻿import { Component, useState } from 'react'
+﻿import React, { Component, useState } from 'react'
 import Container from 'react-bootstrap/Container';
 import axios from 'axios';
 import ContractTable from '../components/contracts/ContractTable';

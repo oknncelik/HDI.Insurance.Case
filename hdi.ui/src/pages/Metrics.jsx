@@ -1,4 +1,4 @@
-﻿import { useState } from 'react'
+﻿import React, { useState } from 'react'
 
 function Metrics() {
     const [count, setCount] = useState(0)

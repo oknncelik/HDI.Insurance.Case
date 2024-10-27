@@ -1,4 +1,5 @@
-﻿import HDINavbar from "../src/components/HDINavbar"
+﻿import React from 'react';
+import HDINavbar from "../src/components/HDINavbar"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Contracts from '../src/pages/Contracts';
