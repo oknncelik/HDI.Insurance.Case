@@ -17,5 +17,6 @@ namespace HDI.Data.Abstruct
         Task<TEntity> UpdateAsync(TEntity entity);
         Task<bool> DeleteAsync(TEntity entity);
         Task<bool> DeleteAsync(long id);
+        Task<bool> AnyAsync(Expression<Func<TEntity, bool>> filter = null);
     }
 }

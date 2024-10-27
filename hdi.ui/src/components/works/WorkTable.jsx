@@ -10,10 +10,22 @@ const columns = [
         sortable: true
     },
     {
-        name: 'Name',
-        selector: row => row.Name,
+        name: 'Partner',
+        selector: row => row.Partner.Name,
         sortable: true
     },
+    {
+        name: 'Ürün/Hizmet',
+        selector: row => row.Product.Name,
+        sortable: true
+    },
+    {
+        name: 'Tarih',
+        selector: row => row.Date,
+        cell: row => new Date(row.Date).toLocaleDateString(),
+        selector: row => row.Date,
+        sortable: true
+    }
 ];
 
 function WorkTable() {

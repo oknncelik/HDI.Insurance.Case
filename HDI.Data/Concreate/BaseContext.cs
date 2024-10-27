@@ -126,5 +126,17 @@ namespace HDI.Data.Concreate
                 return result.Entity;
             }
         }
+
+        public virtual async Task<bool> AnyAsync(Expression<Func<TEntity, bool>> filter = null)
+        {
+            using (var context = new TContext())
+            {
+                var quer = context.Set<TEntity>().Where(x => x.ActiveFlg == true);
+
+                if (filter != null)
+                    return await quer.Where(filter).AnyAsync();
+                return await quer.AnyAsync();
+            }
+        }
     }
 }

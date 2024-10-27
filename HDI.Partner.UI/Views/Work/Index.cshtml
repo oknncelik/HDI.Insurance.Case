@@ -7,6 +7,22 @@
 
 }
 
+<h2>Anlaşmalar</h2>
+
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Ürün/Hizmet</th>
+            <th scope="col">Başlangıç Tarih</th>
+            <th scope="col">Bitiş Tarih</th>
+        </tr>
+    </thead>
+    <tbody id="contractList">
+    </tbody>
+</table>
+<br/>
 <h2>İşler</h2>
 
 <div class="text-right">
@@ -16,7 +32,7 @@
     </button>
 </div>
 
-<br/>
+<br />
 <table class="table">
     <thead>
         <tr>
@@ -26,7 +42,6 @@
         </tr>
     </thead>
     <tbody id="workList">
-
     </tbody>
 </table>
 
@@ -40,12 +55,22 @@
                 <h1 class="modal-title fs-5" id="exampleModalLabel">İş Ekleme</h1>
             </div>
             <div class="modal-body">
+                <div class="alert alert-warning" role="alert">
+                    Güncel anlaşmalı olduğu Ürün ve hizmetler gelir.
+                </div>
                 <div class="mb-3 row">
-                    <label class="col-sm-2 col-form-label">Ürün/Hizmet</label>
+                    <label class="col-sm-12 col-form-label">Anlaşmalı Ürün/Hizmet</label>
                     <div class="col-sm-12">
                         <select class="form-control" name="product" id="product">
                         </select>
                     </div>
+                    <label class="col-sm-12 col-form-label">Tarih</label>
+                    <div class="col-sm-12">
+                        <input type="text" id="workdate" class="form-control">
+                    </div>
+
+
+
                 </div>
             </div>
             <div class="modal-footer">
@@ -60,29 +85,89 @@
 
     <script>
         var products = [];
+        var contracts = [];
+        var selectedDate = "";
+
+        $(document).ready(function () {
+            $('#workdate').datepicker({
+                format: "dd.mm.yyyy",   // Tarih formatı (örn. gün/ay/yıl)
+                todayHighlight: true,   // Bugünün tarihini vurgulamak için
+                autoclose: true         // Tarih seçildiğinde otomatik kapanması için
+            })
+        });
+
+        function getDate(date) {
+            if (!date)
+                return;
+            let myDate = new Date(date);
+            return myDate.getDate() + "." + (myDate.getMonth() + 1) + "." + myDate.getFullYear();
+        }
 
         function preprare() {
+            $("#product").html("");
+            $("#contractList").html("");
+
             products.forEach(function (item, index) {
                 $("#product").append(`<option value="${item.Id}">${item.Name}</option>`)
+            });
+
+            contracts.forEach(function (item, index) {
+                let startDate = getDate(item.StartDate);
+                let endDate = getDate(item.EndDate);
+                
+                let row = ` <tr>
+                                <th scope="row">${item.Id}</th>
+                                <td>${item.Product.Name}</td>
+                                <td>${startDate}</td>
+                                <td>${endDate}</td>
+                            </tr> `
+
+                $("#contractList").append(row)
             });
         }
 
         function postWork() {
             let user = $('select[name="users"]').val();
             let product = $('select[name="product"]').val();
+            var selectedDate = $('#workdate').val();
+
+            if (!selectedDate) {
+                alert("Tarih seçimi yapınız...")
+                return;
+            }
+
+            var parts = selectedDate.split('.');
+            var dateObject = new Date(parts[2], parts[1] - 1, parts[0]);
+            var jsonDate = dateObject.toISOString();
+
             let request = {
                 PartnerId: user,
-                ProductId: product
+                ProductId: product,
+                Date: jsonDate
             };
 
-            $.post("/api/partner/GetProducts/0", request,  function (data) {
-                getWorkList();
+            $.post("/api/partner/AddWork/0", request, function (data) {
+                if (data.IsSuccess) {
+                    alert(data.Message);
+                    getWorkList();
+                } else {
+                    alert(data.Message);
+                }
             });
         }
 
         function getProducts() {
-            $.get("/api/partner/GetProducts/0", function (data) {
+            let user = $('select[name="users"]').val();
+            $.get(`/api/partner/GetProducts/${user}`, function (data) {
                 products = data.Data;
+                preprare();
+            });
+        }
+
+        function getPartnerContracts() {
+            let user = $('select[name="users"]').val();
+            $.get(`/api/partner/GetPartnerContracts/${user}`, function (data) {
+                contracts = data.Data;
                 preprare();
             });
         }
@@ -92,17 +177,17 @@
             let user = $('select[name="users"]').val();
             $.get(`/api/partner/GetWorkList/${user}`, function (data) {
                 data.Data.forEach(function (item) {
-                    let myDate = new Date(item.Date);
-                    let formatDate = myDate.getDate() + "." + (myDate.getMonth() + 1) + "." + myDate.getFullYear();
-                    let row =  `
-                    <tr>
-                        <th scope="row">${item.Id}</th>
-                        <td>${item.Product.Name}</td>
-                        <td>${formatDate}</td>
-                    </tr> `
+                    let date = getDate(item.Date);
+                    let row = `
+                        <tr>
+                            <th scope="row">${item.Id}</th>
+                            <td>${item.Product.Name}</td>
+                            <td>${date}</td>
+                        </tr> `
                     $("#workList").append(row);
-
                 });
+                getProducts();
+                getPartnerContracts();
             });
         }
 

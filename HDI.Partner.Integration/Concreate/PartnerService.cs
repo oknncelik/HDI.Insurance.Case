@@ -33,9 +33,14 @@ namespace HDI.Partner.Integration.Concreate
             return await _service.GetPartners();
         }
 
-        public async Task<Result<List<ProductModel>>> GetProducts()
+        public async Task<Result<List<ProductModel>>> GetProducts(long partnerId)
         {
-            return await _service.GetProducts();
+            return await _service.GetProducts(partnerId);
+        }
+
+        public async Task<Result<List<ContractModel>>> GetPartnerContracts(long partnerId)
+        {
+            return await _service.GetPartnerContracts(partnerId);
         }
     }
 }

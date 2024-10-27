@@ -1,5 +1,6 @@
 ﻿using HDI.Core.Results;
 using HDI.Entities.DTOs;
+using HDI.Entities.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,10 @@ namespace HDI.Partner.WCF.Service
         Task<Result<List<PartnerModel>>> GetPartners();
 
         [OperationContract]
-        Task<Result<List<ProductModel>>> GetProducts();
+        Task<Result<List<ContractModel>>> GetPartnerContracts(long partnerId);
+
+        [OperationContract]
+        Task<Result<List<ProductModel>>> GetProducts(long partnerId);
 
         [OperationContract]
         Task<Result<List<WorkModel>>> GetWorkList(long partnerId);

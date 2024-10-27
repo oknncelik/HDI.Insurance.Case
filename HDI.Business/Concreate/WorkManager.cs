@@ -14,12 +14,14 @@ namespace HDI.Business.Concreate
     {
         private readonly IMapper _mapper;
         private readonly IWorkRepository _workRepository;
-
+        private readonly IContractRepository _contractRepository;
         public WorkManager(IMapper mapper,
+                           IContractRepository contractRepository,
                            IWorkRepository workRepository)
         {
             _mapper = mapper;
-            _workRepository = workRepository;
+            _workRepository  = workRepository;
+            _contractRepository = contractRepository;
         }
 
         public async Task<Result<WorkModel>> AddAsync(WorkModel work)
@@ -28,7 +30,18 @@ namespace HDI.Business.Concreate
 
             try
             {
-                work.Date = DateTime.Now;
+                var isContract = await _contractRepository.AnyAsync(x=> x.ProductId == work.ProductId &&
+                                                                          x.StartDate <= work.Date &&
+                                                                          x.EndDate >= work.Date);
+
+                if (!isContract)
+                {
+                    result.IsSuccess = false;
+                    result.Code = -1;
+                    result.Message = "Girilen tarihi kapsayan bir anlaşmanız bulunmamakta !";
+                    return result;
+                }
+
                 var entity = await _workRepository.AddAsync(_mapper.Map<Work>(work));
 
                 result.Code = 1;
@@ -67,7 +80,7 @@ namespace HDI.Business.Concreate
             return result;
         }
 
-        public async Task<Result<List<WorkModel>>> GetListAsync(long partnerId)
+        public async Task<Result<List<WorkModel>>> GetPartnerWorkListAsync(long partnerId)
         {
             var result = new Result<List<WorkModel>>();
 

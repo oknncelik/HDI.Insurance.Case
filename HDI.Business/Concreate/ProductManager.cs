@@ -15,13 +15,16 @@ namespace HDI.Business.Concreate
     public class ProductManager : IProductManager
     {
         private readonly IMapper _mapper;
-        private readonly IProductRepository _productRepository;
+        private readonly IProductRepository  _productRepository;
+        private readonly IContractRepository _contractRepository;
 
         public ProductManager(IMapper mapper,
+                              IContractRepository contractRepository,
                               IProductRepository productRepository)
         {
             _mapper = mapper;
             _productRepository = productRepository;
+            _contractRepository = contractRepository;
         }
 
         public async Task<Result<ProductModel>> AddAsync(ProductModel product)
@@ -53,6 +56,37 @@ namespace HDI.Business.Concreate
             try
             {
                 var entity = await _productRepository.GetListAsync();
+
+                result.Code = 1;
+                result.Message = "İşlem Başarılı";
+                result.Data = _mapper.Map<List<ProductModel>>(entity);
+            }
+            catch (Exception ex)
+            {
+                result.IsSuccess = false;
+                result.Code = 0;
+                result.Message = $"Hata : {ex.Message}";
+            }
+
+            return result;
+        }
+
+        public async Task<Result<List<ProductModel>>> GetPartnerProductListAsync(long partnerId)
+        {
+            var result = new Result<List<ProductModel>>();
+
+            try
+            {
+                //Partnere ait güncel anlaşmalar...
+                var contract = await  _contractRepository.GetListAsync(x=> x.PartnerId == partnerId && 
+                                                                            x.StartDate <= DateTime.Now &&
+                                                                            x.EndDate >= DateTime.Now);
+
+                //Partnerin ürün anlaşmalar...
+                var products = contract.Select(x => x.ProductId);
+
+                //anlaşmalı olduğu ürün hizmetler...
+                var entity = await _productRepository.GetListAsync(x=> products.Contains(x.Id));
 
                 result.Code = 1;
                 result.Message = "İşlem Başarılı";

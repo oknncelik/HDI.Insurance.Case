@@ -13,5 +13,6 @@ namespace HDI.Business.Abstruct
         Task<Result<ContractModel>> AddAsync(ContractModel contract);
         Task<Result> DeleteAsync(long id);
         Task<Result<List<ContractModel>>> GetListAsync();
+        Task<Result<List<ContractModel>>> GetPartnerContractsAsync(long partnerId);
     }
 }

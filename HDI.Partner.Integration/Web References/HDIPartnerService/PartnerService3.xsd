@@ -43,6 +43,23 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="ResultOfArrayOfPartnerModelwaIoxn6K" nillable="true" type="tns:ResultOfArrayOfPartnerModelwaIoxn6K" />
+  <xs:complexType name="ResultOfArrayOfContractModelwaIoxn6K">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ResultOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/HDI.Core.Results" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ArrayOfContractModel" Namespace="http://schemas.datacontract.org/2004/07/HDI.Entities.DTOs" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Result">
+        <xs:sequence>
+          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/HDI.Entities.DTOs" minOccurs="0" name="Data" nillable="true" type="q3:ArrayOfContractModel" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ResultOfArrayOfContractModelwaIoxn6K" nillable="true" type="tns:ResultOfArrayOfContractModelwaIoxn6K" />
   <xs:complexType name="ResultOfArrayOfProductModelwaIoxn6K">
     <xs:annotation>
       <xs:appinfo>
@@ -54,7 +71,7 @@
     <xs:complexContent mixed="false">
       <xs:extension base="tns:Result">
         <xs:sequence>
-          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/HDI.Entities.DTOs" minOccurs="0" name="Data" nillable="true" type="q3:ArrayOfProductModel" />
+          <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/HDI.Entities.DTOs" minOccurs="0" name="Data" nillable="true" type="q4:ArrayOfProductModel" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -71,7 +88,7 @@
     <xs:complexContent mixed="false">
       <xs:extension base="tns:Result">
         <xs:sequence>
-          <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/HDI.Entities.DTOs" minOccurs="0" name="Data" nillable="true" type="q4:ArrayOfWorkModel" />
+          <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/HDI.Entities.DTOs" minOccurs="0" name="Data" nillable="true" type="q5:ArrayOfWorkModel" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>

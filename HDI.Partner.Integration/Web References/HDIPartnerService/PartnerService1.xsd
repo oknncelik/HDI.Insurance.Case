@@ -6,19 +6,15 @@
       <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HDI.Entities.Concreate" base="q1:Model">
         <xs:sequence>
           <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Partner" nillable="true" type="tns:PartnerModel" />
           <xs:element minOccurs="0" name="PartnerId" type="xs:long" />
+          <xs:element minOccurs="0" name="Product" nillable="true" type="tns:ProductModel" />
           <xs:element minOccurs="0" name="ProductId" type="xs:long" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="WorkModel" nillable="true" type="tns:WorkModel" />
-  <xs:complexType name="ArrayOfPartnerModel">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="PartnerModel" nillable="true" type="tns:PartnerModel" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfPartnerModel" nillable="true" type="tns:ArrayOfPartnerModel" />
   <xs:complexType name="PartnerModel">
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/HDI.Entities.Concreate" base="q2:Model">
@@ -29,12 +25,6 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="PartnerModel" nillable="true" type="tns:PartnerModel" />
-  <xs:complexType name="ArrayOfProductModel">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="ProductModel" nillable="true" type="tns:ProductModel" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfProductModel" nillable="true" type="tns:ArrayOfProductModel" />
   <xs:complexType name="ProductModel">
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/HDI.Entities.Concreate" base="q3:Model">
@@ -45,6 +35,41 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="ProductModel" nillable="true" type="tns:ProductModel" />
+  <xs:complexType name="ArrayOfPartnerModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PartnerModel" nillable="true" type="tns:PartnerModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPartnerModel" nillable="true" type="tns:ArrayOfPartnerModel" />
+  <xs:complexType name="ArrayOfContractModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ContractModel" nillable="true" type="tns:ContractModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfContractModel" nillable="true" type="tns:ArrayOfContractModel" />
+  <xs:complexType name="ContractModel">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/HDI.Entities.Concreate" base="q4:Model">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Count" type="xs:long" />
+          <xs:element minOccurs="0" name="EndDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Partner" nillable="true" type="tns:PartnerModel" />
+          <xs:element minOccurs="0" name="PartnerId" type="xs:long" />
+          <xs:element minOccurs="0" name="Price" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Product" nillable="true" type="tns:ProductModel" />
+          <xs:element minOccurs="0" name="ProductId" type="xs:long" />
+          <xs:element minOccurs="0" name="StartDate" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ContractModel" nillable="true" type="tns:ContractModel" />
+  <xs:complexType name="ArrayOfProductModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ProductModel" nillable="true" type="tns:ProductModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProductModel" nillable="true" type="tns:ArrayOfProductModel" />
   <xs:complexType name="ArrayOfWorkModel">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="WorkModel" nillable="true" type="tns:WorkModel" />
