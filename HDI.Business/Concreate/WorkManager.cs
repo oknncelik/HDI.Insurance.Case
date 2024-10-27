@@ -124,5 +124,27 @@ namespace HDI.Business.Concreate
 
             return result;
         }
+
+        public async Task<Result<List<WorkResultModel>>> GetWorkResultsAsync()
+        {
+            var result = new Result<List<WorkResultModel>>();
+
+            try
+            {
+                var entity = await _workRepository.GetWorkResultsAsync();
+
+                result.Code = 1;
+                result.Message = "İşlem Başarılı";
+                result.Data = _mapper.Map<List<WorkResultModel>>(entity);
+            }
+            catch (Exception ex)
+            {
+                result.IsSuccess = false;
+                result.Code = 0;
+                result.Message = $"Hata : {ex.Message}";
+            }
+
+            return result;
+        }
     }
 }

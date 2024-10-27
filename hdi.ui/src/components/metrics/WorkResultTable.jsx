@@ -10,13 +10,18 @@ const columns = [
         sortable: true
     },
     {
-        name: 'Partner Adı',
-        selector: row => row.Partner.Name,
+        name: 'Partner',
+        selector: row => row.PartnerName,
         sortable: true
     },
     {
         name: 'Ürün/Hizmet Adı',
-        selector: row => row.Product.Name,
+        selector: row => row.ProductName,
+        sortable: true
+    },
+    {
+        name: 'Birim Ücret',
+        selector: row => row.Price,
         sortable: true
     },
     {
@@ -25,20 +30,13 @@ const columns = [
         sortable: true
     },
     {
-        name: 'Birim Fiyat',
-        selector: row => row.Price,
+        name: 'Yapılan İş Adedi',
+        selector: row => row.WorkCount,
         sortable: true
     },
     {
-        name: 'Başlangıç Tarihi',
-        cell: row => new Date(row.StartDate).toLocaleDateString(),
-        selector: row => row.StartDate,
-        sortable: true
-    },
-    {
-        name: 'Bitiş Tarihi',
-        cell: row => new Date(row.EndDate).toLocaleDateString(),
-        selector: row => row.EndDate,
+        name: 'Yapılan İş Yüzdesi',
+        selector: row => row.WorkPercent,
         sortable: true
     },
     {
@@ -46,17 +44,16 @@ const columns = [
         selector: row => row.ExpireDesc,
         sortable: true
     }
-
 ];
 
-function ContractList() {
+function WorkResultTable() {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
         setLoading(true);
-        axios.get(packageJson.serviceBaseURL + "api/contract/getlist")
+        axios.get(packageJson.serviceBaseURL + "api/work/GetWorkResults")
             .then(response => {
                 setData(response.data.Data);
                 setLoading(false);
@@ -76,7 +73,7 @@ function ContractList() {
     }
 
     return (
-        <div>
+        <div className="scroll">
             {
                 data && data.length > 0 ? <DataTable columns={columns} data={data} /> : <p>Veri Bulunamadı !</p>
             }
@@ -84,4 +81,4 @@ function ContractList() {
     );
 }
 
-export default ContractList;
+export default WorkResultTable;

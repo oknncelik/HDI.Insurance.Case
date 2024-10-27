@@ -18,5 +18,6 @@ namespace HDI.Entities.DTOs
         public decimal Price { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
+        public string ExpireDesc => EndDate < DateTime.Now ? "Sonlandı" : "Aktif";
     }
 }

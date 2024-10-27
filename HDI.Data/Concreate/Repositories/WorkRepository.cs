@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -24,6 +25,14 @@ namespace HDI.Data.Concreate.Repositories
                         .Include(x => x.Partner)
                         .Include(x => x.Product)
                         .ToListAsync();
+        }
+
+
+        public async Task<IList<WorkResult>> GetWorkResultsAsync()
+        {
+            return await _context.Database
+                 .SqlQuery<WorkResult>("SELECT * FROM GetContractResults()")
+                 .ToListAsync();
         }
     }
 }

@@ -17,6 +17,7 @@
             <th scope="col">Ürün/Hizmet</th>
             <th scope="col">Başlangıç Tarih</th>
             <th scope="col">Bitiş Tarih</th>
+            <th scope="col">Durum</th>
         </tr>
     </thead>
     <tbody id="contractList">
@@ -120,6 +121,7 @@
                                 <td>${item.Product.Name}</td>
                                 <td>${startDate}</td>
                                 <td>${endDate}</td>
+                                <td>${item.ExpireDesc}</td>
                             </tr> `
 
                 $("#contractList").append(row)
