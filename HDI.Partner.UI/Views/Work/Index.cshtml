@@ -1,0 +1,110 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@section Styles {
+
+}
+
+<h2>İşler</h2>
+
+<div class="text-right">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        İş Ekle
+    </button>
+</div>
+
+<br/>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Ürün/Hizmet</th>
+            <th scope="col">Tarih</th>
+        </tr>
+    </thead>
+    <tbody id="workList">
+
+    </tbody>
+</table>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">İş Ekleme</h1>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3 row">
+                    <label class="col-sm-2 col-form-label">Ürün/Hizmet</label>
+                    <div class="col-sm-12">
+                        <select class="form-control" name="product" id="product">
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                <button type="button" onclick="postWork()" class="btn btn-primary">Kaydet</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+
+    <script>
+        var products = [];
+
+        function preprare() {
+            products.forEach(function (item, index) {
+                $("#product").append(`<option value="${item.Id}">${item.Name}</option>`)
+            });
+        }
+
+        function postWork() {
+            let user = $('select[name="users"]').val();
+            let product = $('select[name="product"]').val();
+            let request = {
+                PartnerId: user,
+                ProductId: product
+            };
+
+            $.post("/api/partner/GetProducts/0", request,  function (data) {
+                getWorkList();
+            });
+        }
+
+        function getProducts() {
+            $.get("/api/partner/GetProducts/0", function (data) {
+                products = data.Data;
+                preprare();
+            });
+        }
+
+        function getWorkList() {
+            $("#workList").html("");
+            let user = $('select[name="users"]').val();
+            $.get(`/api/partner/GetWorkList/${user}`, function (data) {
+                data.Data.forEach(function (item) {
+                    let myDate = new Date(item.Date);
+                    let formatDate = myDate.getDate() + "." + (myDate.getMonth() + 1) + "." + myDate.getFullYear();
+                    let row =  `
+                    <tr>
+                        <th scope="row">${item.Id}</th>
+                        <td>${item.Product.Name}</td>
+                        <td>${formatDate}</td>
+                    </tr> `
+                    $("#workList").append(row);
+
+                });
+            });
+        }
+
+    </script>
+}

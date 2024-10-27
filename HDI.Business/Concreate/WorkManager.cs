@@ -28,6 +28,7 @@ namespace HDI.Business.Concreate
 
             try
             {
+                work.Date = DateTime.Now;
                 var entity = await _workRepository.AddAsync(_mapper.Map<Work>(work));
 
                 result.Code = 1;
@@ -51,6 +52,28 @@ namespace HDI.Business.Concreate
             try
             {
                 var entity = await _workRepository.GetListAsync();
+
+                result.Code = 1;
+                result.Message = "İşlem Başarılı";
+                result.Data = _mapper.Map<List<WorkModel>>(entity);
+            }
+            catch (Exception ex)
+            {
+                result.IsSuccess = false;
+                result.Code = 0;
+                result.Message = $"Hata : {ex.Message}";
+            }
+
+            return result;
+        }
+
+        public async Task<Result<List<WorkModel>>> GetListAsync(long partnerId)
+        {
+            var result = new Result<List<WorkModel>>();
+
+            try
+            {
+                var entity = await _workRepository.GetListAsync(x=> x.PartnerId == partnerId);
 
                 result.Code = 1;
                 result.Message = "İşlem Başarılı";

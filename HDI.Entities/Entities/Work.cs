@@ -10,7 +10,9 @@ namespace HDI.Entities.Entities
     public class Work : Entity
     {
         public long PartnerId { get; set; }
+        public Partner Partner { get; set; }
         public long ProductId { get; set; }
+        public Product Product { get; set; }
         public DateTime Date { get; set; }
     }
 }

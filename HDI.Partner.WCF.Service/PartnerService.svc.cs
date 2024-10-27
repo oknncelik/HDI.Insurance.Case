@@ -36,9 +36,9 @@ namespace HDI.Partner.WCF.Service
             return await _productManager.GetListAsync();
         }
 
-        public async Task<Result<List<WorkModel>>> GetWorkList()
+        public async Task<Result<List<WorkModel>>> GetWorkList(long partnerId)
         {
-            return await _workManager.GetListAsync();
+            return await _workManager.GetListAsync(partnerId);
         }
 
         public async Task<Result<WorkModel>> AddWork(WorkModel work)

@@ -23,6 +23,6 @@ namespace HDI.Partner.WCF.Service
         Task<Result<List<ProductModel>>> GetProducts();
 
         [OperationContract]
-        Task<Result<List<WorkModel>>> GetWorkList();
+        Task<Result<List<WorkModel>>> GetWorkList(long partnerId);
     }
 }

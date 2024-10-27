@@ -26,6 +26,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HDI.Partner.WCF.Service", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HDI.Partner.Integration", "HDI.Partner.Integration\HDI.Partner.Integration.csproj", "{BAE898D3-6936-4AC7-8687-7079D9C352F6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HDI.Partner.UI", "HDI.Partner.UI\HDI.Partner.UI.csproj", "{630E5144-5CB0-4D1C-A914-FADFEBE82EA7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -66,6 +68,10 @@ Global
 		{BAE898D3-6936-4AC7-8687-7079D9C352F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BAE898D3-6936-4AC7-8687-7079D9C352F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BAE898D3-6936-4AC7-8687-7079D9C352F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{630E5144-5CB0-4D1C-A914-FADFEBE82EA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{630E5144-5CB0-4D1C-A914-FADFEBE82EA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{630E5144-5CB0-4D1C-A914-FADFEBE82EA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{630E5144-5CB0-4D1C-A914-FADFEBE82EA7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -73,6 +79,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{FF17A42C-5B61-4338-AE50-EAB940CA9E12} = {263A9DEB-EE1D-47B1-96C1-7D92713DE962}
 		{BAE898D3-6936-4AC7-8687-7079D9C352F6} = {263A9DEB-EE1D-47B1-96C1-7D92713DE962}
+		{630E5144-5CB0-4D1C-A914-FADFEBE82EA7} = {263A9DEB-EE1D-47B1-96C1-7D92713DE962}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B96D11E0-C18B-4FD9-A4C8-9971F4A96AAF}
